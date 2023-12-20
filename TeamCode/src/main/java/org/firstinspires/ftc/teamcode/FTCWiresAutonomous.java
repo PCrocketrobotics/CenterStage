@@ -107,6 +107,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
         telemetry.addData("DS preview on/off", "3 dots, Camera Stream");
         telemetry.addData(">", "Touch Play to start OpMode");
         telemetry.update();
+
         //waitForStart();
 
         while (!isStopRequested() && !opModeIsActive()) {
@@ -144,7 +145,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
 
         switch (startPosition) {
             case BLUE_LEFT:
-                drive = new MecanumDrive(hardwareMap, initPose);
+                //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
                         dropPurplePixelPose = new Pose2d(26, 8, Math.toRadians(0));
@@ -165,7 +166,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 break;
 
             case RED_RIGHT:
-                drive = new MecanumDrive(hardwareMap, initPose);
+                //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
                         dropPurplePixelPose = new Pose2d(22, 6, Math.toRadians(45));
@@ -186,7 +187,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 break;
 
             case BLUE_RIGHT:
-                drive = new MecanumDrive(hardwareMap, initPose);
+                //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
                         dropPurplePixelPose = new Pose2d(27, 9, Math.toRadians(45));
@@ -210,7 +211,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 break;
 
             case RED_LEFT:
-                drive = new MecanumDrive(hardwareMap, initPose);
+                //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
                         dropPurplePixelPose = new Pose2d(26, 8, Math.toRadians(0));
