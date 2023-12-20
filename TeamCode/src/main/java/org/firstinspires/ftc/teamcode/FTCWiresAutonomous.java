@@ -51,20 +51,22 @@ import java.util.List;
 /**
  * FTC WIRES Autonomous Example for only vision detection using tensorflow and park
  */
-@Autonomous(name = "FTC Wires Autonomous Mode", group = "00-Autonomous", preselectTeleOp = "FTC Wires TeleOp")
+@Autonomous(name = "Team14597 Autonomous", group = "00-Autonomous", preselectTeleOp = "Auto TeleOp")
 public class FTCWiresAutonomous extends LinearOpMode {
 
     public static String TEAM_NAME = "PC Rocket Robotics"; //TODO: Enter team Name
     public static int TEAM_NUMBER = 14597; //TODO: Enter team Number
-
+    public String GAME_ELEMENT = "";
     private static final boolean USE_WEBCAM = true;  // true for webcam, false for phone camera
-
+    private TfodProcessor tfod;
+    private VisionPortal visionPortal;
+    private static final String TFOD_MODEL_ASSET = "BothScoringElement.tflite";
+    private static final String[] LABELS = {"BGE","RGE"};
     public DcMotor Pixle_SuckUP;
     public DcMotor Arm_liftMotor;
     public Servo Pixle_drop;
     //Vision parameters
-    private TfodProcessor tfod;
-    private VisionPortal visionPortal;
+
 
     //Define and declare Robot Starting Locations
     public enum START_POSITION{
@@ -90,7 +92,8 @@ public class FTCWiresAutonomous extends LinearOpMode {
         telemetry.addData("Selected Starting Position", startPosition);
 
         //Activate Camera Vision that uses TensorFlow for pixel detection
-        initTfod();
+        //initTfod();
+        initTfod14597();
         Pixle_SuckUP = hardwareMap.get(DcMotor.class, "Pixle_SuckUP");
         Arm_liftMotor = hardwareMap.get(DcMotor.class, "armlift");
         Pixle_drop = hardwareMap.get(Servo.class, "Pixle_drop");
@@ -311,7 +314,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
         telemetry.clearAll();
         //******select start pose*****
         while(!isStopRequested()){
-            telemetry.addData("Initializing FTC Wires (ftcwires.org) Autonomous adopted for Team:",
+            telemetry.addData("Initializing Autonomous for Team 14597:",
                     TEAM_NAME, " ", TEAM_NUMBER);
             telemetry.addData("---------------------------------------","");
             telemetry.addData("Select Starting Position using XYAB on Logitech (or ▢ΔOX on Playstayion) on gamepad 1:","");
@@ -353,12 +356,36 @@ public class FTCWiresAutonomous extends LinearOpMode {
      */
     private void initTfod14597(){
 
+        tfod = new TfodProcessor.Builder()
+                .setModelAssetName(TFOD_MODEL_ASSET)
+                //.setModelFileName(TFOD_MODEL_ASSET)
+                .setModelLabels(LABELS)
+                .build();
+
+        visionPortal = new VisionPortal.Builder()
+                    .setCamera(hardwareMap.get(WebcamName.class, "Webcam 1"))
+                    .addProcessors(tfod)
+                    .build();
     }
 
     private void runTfodTensorFlow14597() {
+        visionPortal.setProcessorEnabled(tfod, true);
 
         List<Recognition> currentRecognitions = tfod.getRecognitions();
         telemetry.addData("# Objects Detected", currentRecognitions.size());
+
+        if (startPosition == START_POSITION.RED_LEFT){
+            GAME_ELEMENT = "RGE";
+        }
+        if (startPosition == START_POSITION.RED_RIGHT){
+            GAME_ELEMENT = "RGE";
+        }
+        if (startPosition == START_POSITION.BLUE_LEFT){
+            GAME_ELEMENT = "BGE";
+        }
+        if (startPosition == START_POSITION.BLUE_RIGHT){
+            GAME_ELEMENT = "BGE";
+        }
 
         //Camera placed between Left and Right Spike Mark on RED_LEFT and BLUE_LEFT If pixel not visible, assume Right spike Mark
         if (startPosition == START_POSITION.RED_LEFT || startPosition == START_POSITION.BLUE_LEFT) {
@@ -378,7 +405,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
             telemetry.addData("- Size", "%.0f x %.0f", recognition.getWidth(), recognition.getHeight());
 
             if (startPosition == START_POSITION.RED_LEFT || startPosition == START_POSITION.BLUE_LEFT) {
-                if (recognition.getLabel() == "Pixel") {
+                if (recognition.getLabel() == GAME_ELEMENT) {
                     if (x < 200) {
                         identifiedSpikeMarkLocation = IDENTIFIED_SPIKE_MARK_LOCATION.LEFT;
                     } else {
@@ -386,7 +413,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                     }
                 }
             } else { //RED_RIGHT or BLUE_RIGHT
-                if (recognition.getLabel() == "Pixel") {
+                if (recognition.getLabel() == GAME_ELEMENT) {
                     if (x < 200) {
                         identifiedSpikeMarkLocation = IDENTIFIED_SPIKE_MARK_LOCATION.MIDDLE;
                     } else {
