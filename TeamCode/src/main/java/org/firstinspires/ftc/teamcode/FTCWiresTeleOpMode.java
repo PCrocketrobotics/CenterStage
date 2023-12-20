@@ -18,7 +18,7 @@ public class FTCWiresTeleOpMode extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         double SLOW_DOWN_FACTOR = 0.5; //TODO Adjust to driver comfort
-        telemetry.addData("Initializing FTC Wires (ftcwires.org) TeleOp adopted for Team:","TEAM NUMBER");
+        telemetry.addData("Initializing driver controlled for Team:","TEAM NUMBER");
         telemetry.update();
 
         if (TuningOpModes.DRIVE_CLASS.equals(MecanumDrive.class)) {
