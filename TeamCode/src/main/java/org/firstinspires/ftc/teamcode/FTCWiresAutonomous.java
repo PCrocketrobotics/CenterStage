@@ -272,8 +272,8 @@ public class FTCWiresAutonomous extends LinearOpMode {
                             .strafeToLinearHeading(midwayPose2.position, midwayPose2.heading)
                             .build());
         }
-
-        safeWaitSeconds(waitSecondsBeforeDrop);
+        // Wait time here to stop at MIDWAY1 Position.
+        //safeWaitSeconds(waitSecondsBeforeDrop);
 
         //Move robot to midwayPose2 and to dropYellowPixelPose
         Actions.runBlocking(
