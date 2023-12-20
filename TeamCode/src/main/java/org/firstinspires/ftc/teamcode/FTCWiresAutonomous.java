@@ -114,7 +114,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
             telemetry.addData("Selected Starting Position", startPosition);
 
             //Run Vuforia Tensor Flow and keep watching for the identifier in the Signal Cone.
-            runTfodTensorFlow();
+            runTfodTensorFlow14597();
             telemetry.addData("Vision identified Parking Location", identifiedSpikeMarkLocation);
             telemetry.update();
         }
