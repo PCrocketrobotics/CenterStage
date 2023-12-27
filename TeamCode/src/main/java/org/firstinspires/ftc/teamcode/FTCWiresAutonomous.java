@@ -169,19 +169,21 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
-                        dropPurplePixelPose = new Pose2d(22, 6, Math.toRadians(45));
+                        dropPurplePixelPose = new Pose2d(25, 6, Math.toRadians(45));
                         dropYellowPixelPose = new Pose2d(35, -36, Math.toRadians(90));
+                        midwayPose1 = new Pose2d(22, 6, Math.toRadians(45));
                         break;
                     case MIDDLE:
                         dropPurplePixelPose = new Pose2d(30, -3, Math.toRadians(0));
                         dropYellowPixelPose = new Pose2d(29, -36,  Math.toRadians(90));
+                        midwayPose1 = new Pose2d(14, -13, Math.toRadians(45));
                         break;
                     case RIGHT:
                         dropPurplePixelPose = new Pose2d(23, -3, Math.toRadians(-38));
                         dropYellowPixelPose = new Pose2d(24, -37, Math.toRadians(90));
+                        midwayPose1 = new Pose2d(14, -13, Math.toRadians(45));
                         break;
                 }
-                midwayPose1 = new Pose2d(14, -13, Math.toRadians(45));
                 waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
                 parkPose = new Pose2d(0, -35, Math.toRadians(90));
                 break;
@@ -215,17 +217,18 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
                         dropPurplePixelPose = new Pose2d(26, 8, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(37, -86, Math.toRadians(90));
+                        dropYellowPixelPose = new Pose2d(36, -86, Math.toRadians(90));
                         break;
                     case MIDDLE:
                         dropPurplePixelPose = new Pose2d(30, -3, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(25.6, -27, Math.toRadians(90));
+                        dropYellowPixelPose = new Pose2d(30, -87, Math.toRadians(90));
                         break;
                     case RIGHT:
                         dropPurplePixelPose = new Pose2d(27, -9, Math.toRadians(-45));
                         dropYellowPixelPose = new Pose2d(23, -87, Math.toRadians(90));
                         break;
                 }
+                moveBeyondTrussPose = new Pose2d(15,5,0);
                 midwayPose1 = new Pose2d(8, 8, Math.toRadians(0));
                 midwayPose1a = new Pose2d(18, 18, Math.toRadians(90));
                 intakeStack = new Pose2d(52, 19,Math.toRadians(90));
@@ -390,7 +393,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
 
         //Camera placed between Left and Right Spike Mark on RED_LEFT and BLUE_LEFT If pixel not visible, assume Right spike Mark
         if (startPosition == START_POSITION.RED_LEFT || startPosition == START_POSITION.BLUE_LEFT) {
-            identifiedSpikeMarkLocation = IDENTIFIED_SPIKE_MARK_LOCATION.RIGHT;
+            identifiedSpikeMarkLocation = IDENTIFIED_SPIKE_MARK_LOCATION.LEFT;
         } else { //RED_RIGHT or BLUE_RIGHT
             identifiedSpikeMarkLocation = IDENTIFIED_SPIKE_MARK_LOCATION.LEFT;
         }
@@ -408,9 +411,9 @@ public class FTCWiresAutonomous extends LinearOpMode {
             if (startPosition == START_POSITION.RED_LEFT || startPosition == START_POSITION.BLUE_LEFT) {
                 if (recognition.getLabel() == GAME_ELEMENT) {
                     if (x < 200) {
-                        identifiedSpikeMarkLocation = IDENTIFIED_SPIKE_MARK_LOCATION.LEFT;
-                    } else {
                         identifiedSpikeMarkLocation = IDENTIFIED_SPIKE_MARK_LOCATION.MIDDLE;
+                    } else {
+                        identifiedSpikeMarkLocation = IDENTIFIED_SPIKE_MARK_LOCATION.RIGHT;
                     }
                 }
             } else { //RED_RIGHT or BLUE_RIGHT
