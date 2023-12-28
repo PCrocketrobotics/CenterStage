@@ -114,7 +114,7 @@ public class Auto14597 extends LinearOpMode {
         Pose2d moveBeyondTrussPose = new Pose2d(0,0,0);
         Pose2d dropPurplePixelPose = new Pose2d(0, 0, 0);
         Pose2d midwayPose1 = new Pose2d(0,0,0);
-        Pose2d midwayPose1a = new Pose2d(0,0,0);
+        Pose2d midwayPose1a = new Pose2d(  0,0,0);
         Pose2d intakeStack = new Pose2d(0,0,0);
         Pose2d midwayPose2 = new Pose2d(0,0,0);
         Pose2d dropYellowPixelPose = new Pose2d(0, 0, 0);

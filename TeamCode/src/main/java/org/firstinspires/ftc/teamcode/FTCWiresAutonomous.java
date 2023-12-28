@@ -144,6 +144,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
         moveBeyondTrussPose = new Pose2d(15,0,0);
 
         switch (startPosition) {
+            // Blue Side closest to Backstage
             case BLUE_LEFT:
                 //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
@@ -164,7 +165,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
                 parkPose = new Pose2d(8, 30, Math.toRadians(-90));
                 break;
-
+            // Red Side Closest to Backstage
             case RED_RIGHT:
                 //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
@@ -187,7 +188,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
                 parkPose = new Pose2d(0, -35, Math.toRadians(90));
                 break;
-
+            
             case BLUE_RIGHT:
                 //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
