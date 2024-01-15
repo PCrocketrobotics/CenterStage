@@ -52,14 +52,17 @@ public class Arm_centerSTAGE {
         if (robot.opMode.gamepad2.circle){
             Ariplane_shooter.setPosition(.3);
         }
-        else {
-            Ariplane_shooter.setPosition(.0);
-        }
+
     }
     public void setHANGING() {
         if (robot.opMode.gamepad1.dpad_down) {
-            Hanging_wrench.setPower(.5);
+            Hanging_wrench.setPower(1);
         } else {
+            Hanging_wrench.setPower(0);
+        }
+        if (robot.opMode.gamepad1.dpad_up){
+            Hanging_wrench.setPower(-1);
+        }else {
             Hanging_wrench.setPower(0);
         }
         if (robot.opMode.gamepad1.circle) {
@@ -95,15 +98,16 @@ public class Arm_centerSTAGE {
 
         }
         if (robot.opMode.gamepad2.dpad_right) {
-            Arm_liftMotor.setTargetPosition(1800);
+            Arm_liftMotor.setTargetPosition(2500);
             Arm_liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             Arm_liftMotor.setPower(1);
 
         }
         if (robot.opMode.gamepad2.dpad_down) {
-            Arm_liftMotor.setTargetPosition(-10);
+            Arm_liftMotor.setTargetPosition(-75);
             Arm_liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             Arm_liftMotor.setPower(1);
+
 
         }
 

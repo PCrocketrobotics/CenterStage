@@ -149,21 +149,21 @@ public class FTCWiresAutonomous extends LinearOpMode {
                 //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
                     case LEFT:
-                        dropPurplePixelPose = new Pose2d(26, 8, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(23, 40, Math.toRadians(-90));
+                        dropPurplePixelPose = new Pose2d(25, 4, Math.toRadians(45));
+                        dropYellowPixelPose = new Pose2d(22, 39, Math.toRadians(-90));
                         break;
                     case MIDDLE:
-                        dropPurplePixelPose = new Pose2d(30, 3, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(29, 40,  Math.toRadians(-90));
+                        dropPurplePixelPose = new Pose2d(27, 3, Math.toRadians(0));
+                        dropYellowPixelPose = new Pose2d(30, 39,  Math.toRadians(-90));
                         break;
                     case RIGHT:
-                        dropPurplePixelPose = new Pose2d(30, -9, Math.toRadians(-45));
-                        dropYellowPixelPose = new Pose2d(37, 40, Math.toRadians(-90));
+                        dropPurplePixelPose = new Pose2d(28, -4, Math.toRadians(-45));
+                        dropYellowPixelPose = new Pose2d(34, 39, Math.toRadians(-90));
                         break;
                 }
                 midwayPose1 = new Pose2d(14, 13, Math.toRadians(-45));
                 waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
-                parkPose = new Pose2d(8, 30, Math.toRadians(-90));
+                parkPose = new Pose2d(0, 40, Math.toRadians(-90));
                 break;
             // Red Side Closest to Backstage
             case RED_RIGHT:
@@ -175,7 +175,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
                         midwayPose1 = new Pose2d(22, 6, Math.toRadians(45));
                         break;
                     case MIDDLE:
-                        dropPurplePixelPose = new Pose2d(30, -3, Math.toRadians(0));
+                        dropPurplePixelPose = new Pose2d(28, -3, Math.toRadians(0));
                         dropYellowPixelPose = new Pose2d(29, -36,  Math.toRadians(90));
                         midwayPose1 = new Pose2d(14, -13, Math.toRadians(45));
                         break;
@@ -186,9 +186,9 @@ public class FTCWiresAutonomous extends LinearOpMode {
                         break;
                 }
                 waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
-                parkPose = new Pose2d(0, -35, Math.toRadians(90));
+                parkPose = new Pose2d(-5, -35, Math.toRadians(90));
                 break;
-            
+
             case BLUE_RIGHT:
                 //drive = new MecanumDrive(hardwareMap, initPose);
                 switch(identifiedSpikeMarkLocation){
@@ -289,7 +289,7 @@ public class FTCWiresAutonomous extends LinearOpMode {
 
 
         //TODO : Code to drop Pixel on Backdrop
-        Arm_liftMotor.setTargetPosition(2500);
+        Arm_liftMotor.setTargetPosition(2750);
         Arm_liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Arm_liftMotor.setPower(1);
         sleep(1000);

@@ -34,6 +34,7 @@ import static com.qualcomm.robotcore.util.ElapsedTime.Resolution.SECONDS;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -44,7 +45,7 @@ import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.tfod.TfodProcessor;
 
 import java.util.List;
-
+@Disabled
 /**
  * FTC WIRES Autonomous Example for only vision detection using tensorflow and park
  */
@@ -134,7 +135,7 @@ public class Auto14597 extends LinearOpMode {
                         dropYellowPixelPose = new Pose2d(23, 36, Math.toRadians(-90));
                         break;
                     case MIDDLE:
-                        dropPurplePixelPose = new Pose2d(30, 3, Math.toRadians(0));
+                        dropPurplePixelPose = new Pose2d(260, 2, Math.toRadians(0));
                         dropYellowPixelPose = new Pose2d(30, 36,  Math.toRadians(-90));
                         break;
                     case RIGHT:
@@ -144,7 +145,7 @@ public class Auto14597 extends LinearOpMode {
                 }
                 midwayPose1 = new Pose2d(14, 13, Math.toRadians(-45));
                 waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
-                parkPose = new Pose2d(8, 30, Math.toRadians(-90));
+                parkPose = new Pose2d(0, 40, Math.toRadians(-90));
                 break;
 
             case RED_RIGHT:
@@ -155,17 +156,17 @@ public class Auto14597 extends LinearOpMode {
                         dropYellowPixelPose = new Pose2d(21, -36, Math.toRadians(90));
                         break;
                     case MIDDLE:
-                        dropPurplePixelPose = new Pose2d(30, -3, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(29, -36,  Math.toRadians(90));
+                        dropPurplePixelPose = new Pose2d(27, -3, Math.toRadians(0));
+                        dropYellowPixelPose = new Pose2d(26, -37,  Math.toRadians(90));
                         break;
                     case RIGHT:
-                        dropPurplePixelPose = new Pose2d(26, -8, Math.toRadians(0));
-                        dropYellowPixelPose = new Pose2d(37, -36, Math.toRadians(90));
+                        dropPurplePixelPose = new Pose2d(27, -8, Math.toRadians(0));
+                        dropYellowPixelPose = new Pose2d(37, -37, Math.toRadians(90));
                         break;
                 }
                 midwayPose1 = new Pose2d(14, -13, Math.toRadians(45));
                 waitSecondsBeforeDrop = 2; //TODO: Adjust time to wait for alliance partner to move from board
-                parkPose = new Pose2d(8, -30, Math.toRadians(90));
+                parkPose = new Pose2d(0, -36, Math.toRadians(90));
                 break;
 
             case BLUE_RIGHT:
